@@ -32,7 +32,7 @@ jobs:
           fi
 
       - name: List files in repository
-        # if: steps.check_branch.outputs.run_job == 'true'
+        # if: env.run_job == 'true'
         run: | 
           echo "The repository ${{ github.repository }} contains the following files:"
           tree
