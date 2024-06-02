@@ -8,10 +8,10 @@ on:
   workflow_dispatch:
   pull_request:
     branches: 
-      - /feat\/RDN-[0-9][0-9]*.*/
-      - /fix\/RDN-[0-9][0-9]*.*/
-      - /chore\/RDN-[0-9][0-9]*.*/
-      - /ci\/RDN-[0-9][0-9]*.*/
+      - '/feat\/RDN-[0-9][0-9]*.*/'
+      - '/fix\/RDN-[0-9][0-9]*.*/'
+      - '/chore\/RDN-[0-9][0-9]*.*/'
+      - '/ci\/RDN-[0-9][0-9]*.*/'
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
