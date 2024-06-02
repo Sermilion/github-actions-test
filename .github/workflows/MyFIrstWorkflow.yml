@@ -3,7 +3,11 @@ name: My First Workflow
 on:
   push:
     branches:
-      - main
+      - 'main'
+      - /feat\/RDN-[0-9][0-9]*.*/
+      - /fix\/RDN-[0-9][0-9]*.*/
+      - /chore\/RDN-[0-9][0-9]*.*/
+      - /ci\/RDN-[0-9][0-9]*.*/
   workflow_dispatch:
 
 jobs:
