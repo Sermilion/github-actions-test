@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - 'feat/RDN-**'
+      - 'fix/RDN-**'
+      - 'chore/RDN-**'
+      - 'main'
   workflow_dispatch:
   pull_request:
     branches:
       - 'feat/RDN-**'
+      - 'fix/RDN-**'
+      - 'chore/RDN-**'
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
@@ -18,22 +23,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.5
 
+      - uses: devops-actions/actionlint@c0ee017f8abef55d843a647cd737b87a1976eb69 #v0.1.1
+
       - name: Set branch name
         id: set_branch
-        run: echo "::set-output name=branch_name::${GITHUB_REF#refs/heads/}"
-
-      - name: Check branch name and run job
-        id: check_branch
         run: |
-          if [[ "${{ steps.set_branch.outputs.branch_name }}" =~ ^(feat|fix|chore|ci)\/RDN-[0-9][0-9]* ]]; then
-            echo "::set-output name=run_job::true"
-          else
-            echo "::set-output name=run_job::false"
-          fi
+          echo "branch_name = ${{ GITHUB_REF#refs/heads/ }}" >> $GITHUB_ENV"
+          echo 'Branch name was set to ${{ GITHUB_REF#refs/heads/ }}' >> $GITHUB_STEP_SUMMARY
 
       - name: List files in repository
-        if: steps.check_branch.outputs.run_job == 'true'
         run: | 
           echo "The repository ${{ github.repository }} contains the following files:"
-          tree
-    
+          tree     
+        
