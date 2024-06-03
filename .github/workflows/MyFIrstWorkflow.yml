@@ -26,8 +26,10 @@ jobs:
         id: check_branch
         run: |
           if [[ "${{ steps.set_branch.outputs.branch_name }}" =~ ^(feat|fix|chore|ci)\/RDN-[0-9][0-9]* ]]; then
+            echo "${{ Step passed }}"
             echo "::set-output name=run_job::true"
           else
+          echo "${{ Step failed }}"
             echo "::set-output name=run_job::false"
           fi
 
