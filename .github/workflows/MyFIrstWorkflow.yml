@@ -26,15 +26,13 @@ jobs:
         id: check_branch
         run: |
           if [[ "${{ steps.set_branch.outputs.branch_name }}" =~ ^(feat|fix|chore|ci)\/RDN-[0-9][0-9]* ]]; then
-            echo "${{ Step passed }}"
-            echo "::set-output name=run_job::true"
+            echo "Step passed"
           else
-          echo "${{ Step failed }}"
-            echo "::set-output name=run_job::false"
+            echo "Step failed"
           fi
 
       - name: List files in repository
-        if: env.run_job == 'true'
+        # if: steps.check_branch.outputs.run_job == 'true'
         run: | 
           echo "The repository ${{ github.repository }} contains the following files:"
           tree
