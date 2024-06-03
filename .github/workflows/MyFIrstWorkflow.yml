@@ -25,10 +25,12 @@ jobs:
       - name: Check branch name and run job
         id: check_branch
         run: |
-          if [[ "${branch_name}" =~ ^(feat|fix|chore|ci)\/RDN-[0-9][0-9]* ]]; then
-            echo "run_job=true" >> $GITHUB_ENV
+          if [[ "${{ steps.set_branch.outputs.branch_name }}" =~ ^(feat|fix|chore|ci)\/RDN-[0-9][0-9]* ]]; then
+            echo "${{ Step passed }}"
+            echo "::set-output name=run_job::true"
           else
-            echo "run_job=false" >> $GITHUB_ENV
+          echo "${{ Step failed }}"
+            echo "::set-output name=run_job::false"
           fi
 
       - name: List files in repository
