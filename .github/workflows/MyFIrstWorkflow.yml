@@ -1,13 +1,13 @@
 name: My First Workflow
+env:
+  working-branches: ('feat/RDN-', 'chore/RDN-', 'fix/RDN-')
 
 on:
   push:
-    branches:
-      - 'feat/RDN-'
+    branches: working-branches
   workflow_dispatch:
   pull_request:
-    branches: 
-    - '**'
+    branches: working-branches
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
