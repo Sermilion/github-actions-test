@@ -1,13 +1,16 @@
 name: My First Workflow
 
+env:
+  WORKING_BRANCHES: '["feat/RDN-**", "fix/RDN-**", "chore/RDN-**"]'
+  PUSH_BRANCHES: '["main", "feat/RDN-**", "fix/RDN-**", "chore/RDN-**"]'
+  
 on:
   push:
-    branches:
-      - 'feat/RDN-**'
+    branches: ${{ fromJson(env.PUSH_BRANCHES) }}
   workflow_dispatch:
   pull_request:
-    branches:
-      - 'feat/RDN-**'
+    branches: ${{ fromJson(env.WORKING_BRANCHES) }}
+
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
