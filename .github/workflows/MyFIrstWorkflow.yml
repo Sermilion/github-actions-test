@@ -1,6 +1,6 @@
 name: My First Workflow
 env:
-  working-branches: ('feat/RDN-', 'chore/RDN-', 'fix/RDN-')
+  working-branches: ('feat/RDN-**', 'chore/RDN-**', 'fix/RDN-**')
 
 on:
   push:
