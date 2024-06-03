@@ -3,11 +3,11 @@ name: My First Workflow
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'feat/RDN-**'
   workflow_dispatch:
   pull_request:
     branches: 
-    - 'feature/**'
+    - 'feat/RDN-**'
 jobs:
   MyFirstJob:
     runs-on: ubuntu-latest
